@@ -88,3 +88,7 @@ lint/tmp/
 
 .DS_Store
 .idea
+
+registerSW.js
+sw.js
+workbox-*.js
