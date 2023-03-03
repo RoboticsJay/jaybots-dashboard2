@@ -14,6 +14,7 @@ import { Values } from '@/typeHelpers';
 
 const GamepadType = {
   LOGITECH_DUAL_ACTION: 'LOGITECH_DUAL_ACTION',
+  LOGITECH_F310: 'LOGITECH_F310',
   XBOX_360: 'XBOX_360',
   SONY_DUALSHOCK_4: 'SONY_DUALSHOCK_4',
   UNKNOWN: 'UNKNOWN',
@@ -33,6 +34,8 @@ export default {
   getFromGamepad: (gamepad: Gamepad) => {
     if (gamepad.id.search('Logitech Dual Action') !== -1) {
       return GamepadType.LOGITECH_DUAL_ACTION;
+    } else if (gamepad.id.search('Logitech Gamepad F310') !== -1) {
+      return GamepadType.LOGITECH_F310;
     } else if (gamepad.id.search('Xbox 360') !== -1) {
       return GamepadType.XBOX_360;
     } else if (
@@ -56,6 +59,7 @@ export default {
   getJoystickDeadzone: (gamepadType: Values<typeof GamepadType>) => {
     switch (gamepadType) {
       case GamepadType.LOGITECH_DUAL_ACTION:
+      case GamepadType.LOGITECH_F310:
         return 0.06;
       case GamepadType.XBOX_360:
         return 0.15;
